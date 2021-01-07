@@ -1,0 +1,28 @@
+From 4797272a5b1da4ad22da8862c8ca06ac7a724655 Mon Sep 17 00:00:00 2001
+From: pcranaway <pcranaway@tuta.io>
+Date: Thu, 7 Jan 2021 17:33:56 +0200
+Subject: [PATCH] change style
+
+
+diff --git a/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java b/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
+index c428e6a6..11350e74 100644
+--- a/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
++++ b/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
+@@ -153,12 +153,10 @@ public class KnockbackModificationCommand extends Command {
+     }
+ 
+     private void updated(CommandSender viewer, String name, double oldVal, double newVal) {
+-        viewer.sendMessage(ChatColor.GREEN + "Updated " + ChatColor.GOLD + name + ChatColor.GREEN + " from " +
+-                ChatColor.BLUE + oldVal + ChatColor.GREEN + " to " + ChatColor.BLUE + newVal);
++        viewer.sendMessage(ChatColor.GOLD + "Changed value of " + ChatColor.WHITE + name + ChatColor.GOLD + " to " + ChatColor.WHITE + newVal);
+     }
+ 
+     private void sendValue(CommandSender viewer, String name, double value) {
+-        viewer.sendMessage(ChatColor.AQUA + ChatColor.BOLD.toString() + name + ChatColor.RESET +
+-                ": " + ChatColor.BLUE + value);
++        viewer.sendMessage(ChatColor.GOLD + name + ": " + ChatColor.WHITE + value);
+     }
+ }
+-- 
+2.29.2
+
