@@ -1,0 +1,24 @@
+From f14ee369809117431e499d566b6f856c9cbcbfe0 Mon Sep 17 00:00:00 2001
+From: pcranaway <pcranaway@tuta.io>
+Date: Thu, 7 Jan 2021 17:21:48 +0200
+Subject: [PATCH] make usage prettier
+
+
+diff --git a/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java b/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
+index bacba45e..c428e6a6 100644
+--- a/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
++++ b/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
+@@ -54,7 +54,9 @@ public class KnockbackModificationCommand extends Command {
+             return true;
+         }
+         if (args.length < 1) {
+-            sender.sendMessage(ChatColor.RED + "Usage: " + usageMessage);
++            SUBCOMMANDS.forEach((name, description) -> {
++                sender.sendMessage(ChatColor.GOLD + "/" + currentAlias + " " + name + ChatColor.RESET + " - " + description);
++            });
+             return true;
+         }
+ 
+-- 
+2.29.2
+
