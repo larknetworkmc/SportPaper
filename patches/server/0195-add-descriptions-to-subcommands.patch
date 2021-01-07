@@ -1,0 +1,49 @@
+From ca5447345a9ae7b078b1674378eb1dcf2fe24548 Mon Sep 17 00:00:00 2001
+From: pcranaway <pcranaway@tuta.io>
+Date: Thu, 7 Jan 2021 17:06:22 +0200
+Subject: [PATCH] add descriptions to subcommands
+
+
+diff --git a/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java b/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
+index 142f4268..bacba45e 100644
+--- a/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
++++ b/src/main/java/app/ashcon/sportpaper/server/KnockbackModificationCommand.java
+@@ -8,11 +8,25 @@ import org.bukkit.util.StringUtil;
+ import org.github.paperspigot.PaperSpigotConfig;
+ 
+ import java.util.ArrayList;
++import java.util.HashMap;
+ import java.util.List;
++import java.util.Map;
+ 
+ public class KnockbackModificationCommand extends Command {
+ 
+-    private static final List<String> ARGUMENTS = ImmutableList.of("friction", "horizontal", "vertical", "vertical-limit", "extra-horizontal", "extra-vertical", "reset", "show");
++    private static final Map<String, String> SUBCOMMANDS = new HashMap<String, String>() {{
++        put("friction", "Changes the friction");
++
++        put("horizontal", "Changes the horizontal knockback");
++        put("extra-horizontal", "Changes the extra horizontal knockback");
++
++        put("vertical", "Changes the vertical knockback");
++        put("vertical-limit", "Changes the vertical limit");
++        put("extra-vertical", "Changes the extra vertical knockback");
++
++        put("reset", "Resets the knockback to the default values");
++        put("show", "Shows the current knockback values");
++    }};
+ 
+     // Default values
+     private final double knockbackFriction, knockbackHorizontal, knockbackVertical, knockbackVerticalLimit,
+@@ -120,7 +134,7 @@ public class KnockbackModificationCommand extends Command {
+     @Override
+     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
+         if (args.length == 1) {
+-            return StringUtil.copyPartialMatches(args[0], ARGUMENTS, new ArrayList<>(ARGUMENTS.size()));
++            return StringUtil.copyPartialMatches(args[0], SUBCOMMANDS.keySet(), new ArrayList<>(SUBCOMMANDS.size()));
+         }
+         return ImmutableList.of();
+     }
+-- 
+2.29.2
+
